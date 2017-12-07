@@ -67,7 +67,7 @@
                 <script src="{{ asset('js/cloudformatter.js') }}"></script>
                 <script> 
 </script>
-                <a href="#" onclick="return xepOnline.Formatter.Format('Usage');">
+                <a href="#" onclick="return xepOnline.Formatter.Format('Content');">
                     <button class="btn btn-primary btn-block" style="height:50px; font-size: 15px;">
                     Exportieren
                     </button>
@@ -79,7 +79,7 @@
 </div>
 
 
-<div id="Usage" style="display:none;">
+<div id="Content" style="display:none;">
 @foreach ($marinas as $marina)
 <div class="container" style="display:none;">
 
