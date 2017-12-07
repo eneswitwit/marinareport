@@ -24,7 +24,7 @@ class Marina extends Model
 
 	public static function hafen_label()
 	{
-		return ['Kurz Charakteristik','Aktuelle Belegung','Ausstattung','im Wasser','für Transitgäste','Dauer-Liegeplätze','Bemerkung','Modernität und Attraktivität des Marina'];
+		return ['Kurz Charakteristik','Aktuelle Belegung','Ausstattung','im Wasser','für Transitgäste','Dauer Liegeplätze','Bemerkung','Modernität und Attraktivität des Marina'];
 	}
 
 	public static function erreichbarkeit()
@@ -34,7 +34,7 @@ class Marina extends Model
 
 	public static function erreichbarkeit_label() 
 	{
-		return ['per Auto aus München','zum nächsten Flughafen','per Yacht','zum Stadtzentrum','Wertung Lage/Erreichbarkeit','Wertung Erreichbarkeit per Boot','in der Zufahrt','in der Marina','Vor Wind und Wetter','Sicherheit','Marinero','Wertung Sicherheit und Schutz'];
+		return ['per Auto aus München','zum nächsten Flughafen','per Yacht','zum Stadtzentrum','Wertung der Lage und Erreichbarkeit','Wertung Erreichbarkeit per Boot','in der Zufahrt','in der Marina','Vor Wind und Wetter','Sicherheit','Marinero','Wertung Sicherheit und Schutz'];
 	}
 
 
@@ -55,7 +55,7 @@ class Marina extends Model
 
 	public static function preise_label()
 	{
-		return ['Tagesliege-platz NS/VS/HS','Jahresliege-platz Wasser ','Landliegeplatz im Winterhalbjahr?','Anzahl','Preis pro Woche','Kosten für Trailer pro Woche','Slipbahn'];
+		return ['Tagesliegeplatz NS/VS/HS','Jahresliegeplatz Wasser ','Landliegeplatz im Winterhalbjahr?','Anzahl','Preis pro Woche','Kosten für Trailer pro Woche','Slipbahn'];
 	}
 
 	public static function kontakt() 
