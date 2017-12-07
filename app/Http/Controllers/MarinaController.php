@@ -103,7 +103,7 @@ class MarinaController extends Controller
         $marina->save();
 
         $marinas = Marina::all();
-        return view('home')->with(['marinas'=>$marinas]);
+        return Redirect::action('HomeController@index');
     }
 
     /**
