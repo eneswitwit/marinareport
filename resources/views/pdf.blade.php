@@ -16,6 +16,7 @@
 		font-family: 'Raleway', sans-serif;
 		font-weight: 100;
 		margin: 0;
+		word-break: break-all;
 		}
 		.full-height {
 		}
@@ -55,7 +56,7 @@
 		</style>
 	</head>
 	<body style="background-color: white;">
-		<div style="height:1188px;width: 803px;background-color: #000080;">
+		<div style="height:1000px;width: 803px;background-color: #000080;">
 			<div class="content">
 				<div class="title m-b-md">
 					Marina Report
@@ -85,10 +86,10 @@
 							}
 						?> </span></p>
 						<p> <b> Wertung Sicherheit und Schutz </b> <?php for($x=$marina->l_sicherheit_wertung;$x>0;$x--){
-														echo '<span style="color:#f4e842;"> ★ </span>';
+																			echo '<span style="color:#f4e842;"> ★ </span>';
 						}?></p>
 						<p> <b> Wertung der Lage und Erreichbarkeit </b> <?php for($x=$marina->ls_wertung;$x>0;$x--){
-														echo '<span style="color:#f4e842;"> ★ </span>';
+																			echo '<span style="color:#f4e842;"> ★ </span>';
 						}?> </p>
 					</div>
 				</div>
@@ -99,7 +100,7 @@
 						@foreach ($hafen as $i => $input)
 						@if (!str_contains($input,'av') & !str_contains($input,'wertung'))
 						<div class="row">
-							<label for="name" class="col-md-2 control-label">{{ $hafen_label[$i] }}</label>
+							<label for="name" class="col-md-3 control-label">{{ $hafen_label[$i] }}</label>
 							
 							<div class="col-md-9">
 								@if (!str_contains($input,'wertung'))
@@ -114,7 +115,7 @@
 						@foreach ($hafen as $i => $input)
 						@if (str_contains($input,'av') & !str_contains($input,'wertung'))
 						<div class="row">
-							<label for="name" class="col-md-2 control-label">{{ $hafen_label[$i] }}</label>
+							<label for="name" class="col-md-3 control-label">{{ $hafen_label[$i] }}</label>
 							
 							<div class="col-md-9">
 								@if (!str_contains($input,'wertung'))
@@ -131,7 +132,7 @@
 						@foreach ($preise as $i => $input)
 						@if (str_contains($input,'p_ps') & !str_contains($input,'wertung'))
 						<div class="row">
-							<label for="name" class="col-md-2 control-label">{{ $preise_label[$i] }}</label>
+							<label for="name" class="col-md-3 control-label">{{ $preise_label[$i] }}</label>
 							<div class="col-md-9">
 								@if (!str_contains($input,'wertung'))
 								{{ $marina->$input }}
@@ -146,7 +147,7 @@
 						@foreach ($preise as $i => $input)
 						@if (str_contains($input,'p_pp')& !str_contains($input,'wertung'))
 						<div class="row">
-							<label for="name" class="col-md-2 control-label">{{ $preise_label[$i] }}</label>
+							<label for="name" class="col-md-3 control-label">{{ $preise_label[$i] }}</label>
 							<div class="col-md-9">
 								@if (!str_contains($input,'wertung'))
 								{{ $marina->$input }}
@@ -157,14 +158,24 @@
 						</div>
 						@endif
 						@endforeach
+						<div style="border:0.5px solid green; padding: 5px;padding-bottom:50px; ">
+							<h5 style="text-align: center;"> Fazit </h5>
+							@foreach ($fazit as $i => $input)
+							<div class="row">
+								<label for="name" class="col-md-3 control-label">{{ $fazit_label[$i] }}</label>
+								<div class="col-md-9">
+									{{ $marina->$input }}
+								</div>
+							</div>
+							@endforeach
+						</div>
 					</div>
 					<div class="col-md-6">
 						<h5 style="text-align: center;"> <b> Erreichbarkeit </b> </h5>
-						<h6> Erreichbarkeit </h6>
 						@foreach ($erreichbarkeit as $i => $input)
 						@if (str_contains($input,'_e_') & !str_contains($input,'wertung'))
 						<div class="row">
-							<label for="name" class="col-md-2 control-label">{{ $erreichbarkeit_label[$i] }}</label>
+							<label for="name" class="col-md-3 control-label">{{ $erreichbarkeit_label[$i] }}</label>
 							<div class="col-md-9">
 								@if (!str_contains($input,'wertung'))
 								{{ $marina->$input }}
@@ -193,7 +204,7 @@
 						@foreach ($erreichbarkeit as $i => $input)
 						@if (str_contains($input,'wt') & !str_contains($input,'wertung'))
 						<div class="row">
-							<label for="name" class="col-md-2 control-label">{{ $erreichbarkeit_label[$i] }}</label>
+							<label for="name" class="col-md-3 control-label">{{ $erreichbarkeit_label[$i] }}</label>
 							<div class="col-md-9">
 								@if (!str_contains($input,'wertung'))
 								{{ $marina->$input }}
@@ -206,7 +217,7 @@
 						<h5 style="text-align: center;"> <b> Schutz des Liegeplatzes </b> </h5>
 						@foreach ($schutz as $i => $input)
 						<div class="row">
-							<label for="name" class="col-md-2 control-label">{{ $schutz_label[$i] }}</label>
+							<label for="name" class="col-md-3 control-label">{{ $schutz_label[$i] }}</label>
 							<div class="col-md-9">
 								@if (!str_contains($input,'wertung'))
 								{{ $marina->$input }}
@@ -215,40 +226,25 @@
 							</div>
 						</div>
 						@endforeach
+						<h5 style="text-align: center;"> <b> Lage und Services </b> </h5>
+						@foreach ($lageservices as $i => $input)
+						@if (!str_contains($input,'wertung'))
+						<div class="row">
+							<label for="name" class="col-md-3 control-label">{{ $lageservices_label[$i] }}</label>
+							<div class="col-md-9">
+								{{ $marina->$input }}
+							</div>
+						</div>
+						@endif
+						@endforeach
 					</div>
 				</div>
-			</div>
-		</div>
-		<div style="height:1188px;width: 803px;font-size: 11px; background-color: white;">
-			<h5 style="text-align: center;"> <b> Lage und Services </b> </h5>
-			@foreach ($lageservices as $i => $input)
-			<p>
-			<label for="name">{{ $lageservices_label[$i] }}</label>
-				@if (!str_contains($input,'wertung'))
-				{{ $marina->$input }}
-				@endif
-			</p>
-			@endforeach
-			<h5 style="text-align: center;"> Fazit </h5>
-			@foreach ($fazit as $i => $input)
-			<label for="name">{{ $fazit_label[$i] }}</label>
-			<p>@if (!str_contains($input,'wertung'))
-				{{ $marina->$input }}
-				@else
-				{{ $marina->$input }}
-			@endif</p>
-			@endforeach
-			<h5 style="text-align: center;"> Kontakt </h5>
+				<div style="text-align: center; margin-top: 5px; font-style: italic;">
 			@foreach ($kontakt as $i => $input)
-			<label for="name">{{ $kontakt_label[$i] }}</label>
-			<p>
-				@if (!str_contains($input,'wertung'))
-				{{ $marina->$input }}
-				@else
-				{{ $marina->$input }}
-				@endif
-			</p>
+			{{ $marina->$input . " | " }}
 			@endforeach
+		</div>
+		</div>
 		</div>
 	</div>
 </div>
