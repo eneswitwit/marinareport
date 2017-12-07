@@ -67,7 +67,7 @@
                 <script src="{{ asset('js/cloudformatter.js') }}"></script>
                 <script> 
 </script>
-                <a href="/pdf">
+                <a href="http://api.pdflayer.com/api/convert?access_key=a888898b574792bdc1687ed1440c8085&document_url=http://marina.eneswitwit.com/pdf& page_size=A4&margin_top=10&margin_bottom=10&margin_left=10&margin_right=10&ttl=300">
                     <button class="btn btn-primary btn-block" style="height:50px; font-size: 15px;">
                     Exportieren
                     </button>

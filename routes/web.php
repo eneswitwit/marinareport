@@ -28,7 +28,7 @@ Auth::routes();
 // Home
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/pdf', 'HomeController@printPDF')->name('pdf');
+Route::get('/pdf', 'MarinaController@printPDF')->name('pdf');
 
 
 // Marina
