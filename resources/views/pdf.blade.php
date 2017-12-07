@@ -63,9 +63,10 @@
                 </div>
             </div>
          </div>
+    </body>
 
 @foreach ($marinas as $marina)
-<div style="height:1188px;width: 803px;">
+<div style="height:1188px;width: 803px;font-size: 11px;">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
@@ -73,10 +74,9 @@
                     {{ $marina->marinaname }}
                 </div>
             </div>
-                <div class="panel-body" style="border: 1px solid #d3e0e9; border-radius:4px 4px 4px 4px;">
-                            <img src={{ '/bilder/' . $marina->bild }} style="width: 100%";>
-                            <hr>
-                        <h2 style="text-align: center;"> Region </h2>
+                <div class="panel-body" style="">
+                            <img src={{ '/bilder/' . $marina->bild }} style="width: 100%";>                    
+                        <h5 style="text-align: center;"> Region </h5>
                         @foreach ($region as $i => $input)
                         <div class="row">
                             <label for="name" class="col-md-2 control-label">{{ $region_label[$i] }}</label>
@@ -85,8 +85,8 @@
                             </div>
                         </div>
                         @endforeach
-                        <hr>
-                        <h2 style="text-align: center;"> Hafen </h2>
+                   
+                        <h5 style="text-align: center;"> Hafen </h5>
                         @foreach ($hafen as $i => $input)
                         @if (!str_contains($input,'av'))
                         <div class="row">
@@ -102,7 +102,7 @@
                         </div>
                         @endif
                         @endforeach
-                        <h4 style=""> Anzahl und Verfügbarkeit Liegeplätze</h4>
+                        <h6 style=""> Anzahl und Verfügbarkeit Liegeplätze</h6>
                         @foreach ($hafen as $i => $input)
                         @if (str_contains($input,'av'))
                         <div class="row">
@@ -119,9 +119,9 @@
                         </div>
                         @endif
                         @endforeach
-                        <hr>
-                        <h2 style="text-align: center;"> Erreichbarkeit </h2>
-                        <h4> Erreichbarkeit </h4>
+                   
+                        <h5 style="text-align: center;"> Erreichbarkeit </h5>
+                        <h6> Erreichbarkeit </h6>
                         @foreach ($erreichbarkeit as $i => $input)
                         @if (str_contains($input,'_e_'))
                             <div class="row">
@@ -136,7 +136,7 @@
                         </div>
                         @endif
                         @endforeach
-                        <h4> Attraktive Lage </h4>
+                        <h6> Attraktive Lage </h6>
                         @foreach ($erreichbarkeit as $i => $input)
                         @if (str_contains($input,'_a_'))
                             <div class="row">
@@ -165,7 +165,7 @@
                         </div>
                         @endif
                         @endforeach
-                        <h4> Wassertiefe </h4>
+                        <h6> Wassertiefe </h6>
                         @foreach ($erreichbarkeit as $i => $input)
                         @if (str_contains($input,'wt'))
                             <div class="row">
@@ -180,8 +180,8 @@
                         </div>
                         @endif
                         @endforeach
-                        <hr>
-                        <h2 style="text-align: center;"> Schutz des Liegeplatzes </h2>
+                   
+                        <h5 style="text-align: center;"> Schutz des Liegeplatzes </h5>
                         @foreach ($schutz as $i => $input)
                             <div class="row">
                             <label for="name" class="col-md-2 control-label">{{ $schutz_label[$i] }}</label>
@@ -208,8 +208,8 @@
                         </div>
                         @endif
                         @endforeach
-                        <hr>
-                        <h2 style="text-align: center;"> Lage und Services </h2>
+                   
+                        <h5 style="text-align: center;"> Lage und Services </h5>
                         @foreach ($lageservices as $i => $input)
                             <div class="row">
                             <label for="name" class="col-md-2 control-label">{{ $lageservices_label[$i] }}</label>
@@ -222,9 +222,9 @@
                             </div>
                         </div>
                         @endforeach
-                        <hr>
-                        <h2 style="text-align: center;"> Preise </h2>
-                        <h4> Preise 37 Fuß </h4>
+                   
+                        <h5 style="text-align: center;"> Preise </h5>
+                        <h6> Preise 37 Fuß </h6>
                         @foreach ($preise as $i => $input)
                         @if (str_contains($input,'p_ps'))
                             <div class="row">
@@ -240,7 +240,7 @@
                         @endif
                         @endforeach
                         
-                        <h4> Parkplätze </h4>
+                        <h6> Parkplätze </h6>
                         @foreach ($preise as $i => $input)
                         @if (str_contains($input,'p_pp'))
                             <div class="row">
@@ -255,8 +255,8 @@
                         </div>
                         @endif
                         @endforeach
-                        <hr>
-                        <h2 style="text-align: center;"> Kontakt </h2>
+                   
+                        <h5 style="text-align: center;"> Kontakt </h5>
                         @foreach ($kontakt as $i => $input)
                             <div class="row">
                             <label for="name" class="col-md-2 control-label">{{ $kontakt_label[$i] }}</label>
@@ -269,8 +269,8 @@
                             </div>
                         </div>
                         @endforeach
-                        <hr>
-                        <h2 style="text-align: center;"> Fazit </h2>
+                   
+                        <h5 style="text-align: center;"> Fazit </h5>
                         @foreach ($fazit as $i => $input)
                             <div class="row">
                             <label for="name" class="col-md-2 control-label">{{ $fazit_label[$i] }}</label>
@@ -296,7 +296,6 @@
 
 
 
-</body>
 </html>
 
 
