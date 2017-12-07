@@ -85,16 +85,16 @@
 							}
 						?> </span></p>
 						<p> <b> Wertung Sicherheit und Schutz </b> <?php for($x=$marina->l_sicherheit_wertung;$x>0;$x--){
-											echo '<span style="color:#f4e842;"> ★ </span>';
+														echo '<span style="color:#f4e842;"> ★ </span>';
 						}?></p>
 						<p> <b> Wertung der Lage und Erreichbarkeit </b> <?php for($x=$marina->ls_wertung;$x>0;$x--){
-											echo '<span style="color:#f4e842;"> ★ </span>';
+														echo '<span style="color:#f4e842;"> ★ </span>';
 						}?> </p>
 					</div>
 				</div>
 				<div class="row" style="width: 803px;padding: 0px;margin:0px;margin-top: 10px;">
 					
-					<div class="col-md-4" style="">
+					<div class="col-md-6" style="">
 						<h5 style="text-align: center;"> <b> Hafen  </b> </h5>
 						@foreach ($hafen as $i => $input)
 						@if (!str_contains($input,'av') & !str_contains($input,'wertung'))
@@ -126,7 +126,6 @@
 						</div>
 						@endif
 						@endforeach
-
 						<h5 style="text-align: center;"> <b>Preise</b> </h5>
 						<h6> Preise 37 Fuß </h6>
 						@foreach ($preise as $i => $input)
@@ -158,9 +157,8 @@
 						</div>
 						@endif
 						@endforeach
-
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-6">
 						<h5 style="text-align: center;"> <b> Erreichbarkeit </b> </h5>
 						<h6> Erreichbarkeit </h6>
 						@foreach ($erreichbarkeit as $i => $input)
@@ -218,55 +216,41 @@
 						</div>
 						@endforeach
 					</div>
-					<div class="col-md-4">
-						<h5 style="text-align: center;"> <b> Lage und Services </b> </h5>
-						@foreach ($lageservices as $i => $input)
-						<div class="row">
-							<label for="name" class="col-md-2 control-label">{{ $lageservices_label[$i] }}</label>
-							<div class="col-md-9">
-								@if (!str_contains($input,'wertung'))
-								{{ $marina->$input }}
-								@else
-								@endif
-							</div>
-						</div>
-						@endforeach
-					</div>
 				</div>
-				<hr>
-				<h5 style="text-align: center;"> Fazit </h5>
-				@foreach ($fazit as $i => $input)
-				<div class="row">
-					<label for="name" class="col-md-2 control-label">{{ $fazit_label[$i] }}</label>
-					<div class="col-md-9">
-						@if (!str_contains($input,'wertung'))
-						{{ $marina->$input }}
-						@else
-						{{ $marina->$input }}
-						@endif
-					</div>
-				</div>
-				@endforeach
-				<hr>
-				<div class="row" style="width: 803px;padding: 0px;margin:0px;margin-top: 10px; border:0px solid grey;">
-						@foreach ($kontakt as $i => $input)
-						<label for="name" class="col-md-1 control-label">{{ $kontakt_label[$i] }}</label>
-							<div class="col-md-1">
-								@if (!str_contains($input,'wertung'))
-								{{ $marina->$input }}
-								@else
-								{{ $marina->$input }}
-								@endif
-							</div>
-						@endforeach
-				</div>
-			</div>
-			<div>
 			</div>
 		</div>
+		<div style="height:1188px;width: 803px;font-size: 11px; background-color: white;">
+			<h5 style="text-align: center;"> <b> Lage und Services </b> </h5>
+			@foreach ($lageservices as $i => $input)
+			<p>
+			<label for="name">{{ $lageservices_label[$i] }}</label>
+				@if (!str_contains($input,'wertung'))
+				{{ $marina->$input }}
+				@endif
+			</p>
+			@endforeach
+			<h5 style="text-align: center;"> Fazit </h5>
+			@foreach ($fazit as $i => $input)
+			<label for="name">{{ $fazit_label[$i] }}</label>
+			<p>@if (!str_contains($input,'wertung'))
+				{{ $marina->$input }}
+				@else
+				{{ $marina->$input }}
+			@endif</p>
+			@endforeach
+			<h5 style="text-align: center;"> Kontakt </h5>
+			@foreach ($kontakt as $i => $input)
+			<label for="name">{{ $kontakt_label[$i] }}</label>
+			<p>
+				@if (!str_contains($input,'wertung'))
+				{{ $marina->$input }}
+				@else
+				{{ $marina->$input }}
+				@endif
+			</p>
+			@endforeach
+		</div>
 	</div>
-</div>
-</div>
 </div>
 @endforeach
 </body>
