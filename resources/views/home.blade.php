@@ -79,9 +79,9 @@
 </div>
 
 
-<div id="Usage" style="display: none;">
+<div id="Usage" style="display:none;">
 @foreach ($marinas as $marina)
-<div class="container">
+<div class="container" style="display:none;">
 
     <style>
     .row {

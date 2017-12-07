@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Input as Input;
 use marinareport\User as User;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth as Auth;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 
 class LoginController extends Controller
 {
@@ -40,13 +42,17 @@ class LoginController extends Controller
     public function login()
     {
         $data = Input::all();
-        $user = User::where('email',$data['email'])->first();
-        if($user->password == $data['password']){
-            Auth::login($user);
-            return redirect::route('home');
+        try {
+            $user = User::where('email',$data['email'])->firstorFail();
+            if($user->password == $data['password']){
+                Auth::login($user);
+                return redirect::route('home');
+            }
+        }
+        catch (ModelNotFoundException $ex) {
+            return view('welcome')->withErrors(['email' => 'Email Adresse oder Passwort wurde falsch eingegeben','password' => ' ']);
         }
 
-        dd('didnt work');
     }
 
     public function __construct()
