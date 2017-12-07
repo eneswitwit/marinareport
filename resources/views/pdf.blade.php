@@ -233,7 +233,7 @@
 						@endforeach
 					</div>
 				</div>
-				
+				<hr>
 				<h5 style="text-align: center;"> Fazit </h5>
 				@foreach ($fazit as $i => $input)
 				<div class="row">
@@ -247,7 +247,8 @@
 					</div>
 				</div>
 				@endforeach
-				<div class="row" style="width: 803px;padding: 0px;margin:0px;margin-top: 10px; border:1px solid grey;">
+				<hr>
+				<div class="row" style="width: 803px;padding: 0px;margin:0px;margin-top: 10px; border:0px solid grey;">
 						@foreach ($kontakt as $i => $input)
 						<label for="name" class="col-md-1 control-label">{{ $kontakt_label[$i] }}</label>
 							<div class="col-md-1">
