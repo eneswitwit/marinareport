@@ -108,7 +108,7 @@ class Marina extends Model
  
 	protected $fillable = 
 	[
-        'land','region' ,'marinaname','h_kurz_charakteristik','h_aktuelle_belegung','h_ausstattung','h_av_wasser','h_av_transitgaeste','h_av_dauerliegeplaetze','h_av_bemerkung','h_bewertung','l_e_auto','l_e_flughafen','l_e_yacht','l_a_stadtzentrum','l_bewertung','l_e_boot_wertung','l_wt_zufahrt','l_wt_marina','l_sicherheit_wertung','ls_yachtservices','ls_eigenarbeit','ls_externe_firma','ls_externe_firma_eigner','ls_tankstelle','ls_wertung','p_ps_tagesliegeplatz','p_ps_jahresliegeplatz','p_ps_landliegeplatz','p_pp_anzahl','p_pp_woche','p_pp_trailer_woche','p_slipbahn','a_website','f_zusammenfassung'
+        'land','region' ,'marinaname','h_kurz_charakteristik','h_aktuelle_belegung','h_ausstattung','h_av_wasser','h_av_transitgaeste','h_av_dauerliegeplaetze','h_av_bemerkung','h_bewertung','l_e_auto','l_e_flughafen','l_e_yacht','l_a_stadtzentrum','l_bewertung','l_e_boot_wertung','l_wt_zufahrt','l_wt_marina','l_sicherheit_wertung','ls_yachtservices','ls_eigenarbeit','ls_externe_firma','ls_externe_firma_eigner','ls_tankstelle','ls_wertung','p_ps_tagesliegeplatz','p_ps_jahresliegeplatz','p_ps_landliegeplatz','p_pp_anzahl','p_pp_woche','p_pp_trailer_woche','p_slipbahn','a_website','f_zusammenfassung','e_sdl_wind','e_sdl_sicherheit','e_sdl_marinero','l_sicherheit_wertung',
     ];
 
 }
