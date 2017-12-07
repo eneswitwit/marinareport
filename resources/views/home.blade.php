@@ -67,7 +67,7 @@
                 <script src="{{ asset('js/cloudformatter.js') }}"></script>
                 <script> 
 </script>
-                <a href="#" onclick="return xepOnline.Formatter.Format('Content');">
+                <a href="/pdf">
                     <button class="btn btn-primary btn-block" style="height:50px; font-size: 15px;">
                     Exportieren
                     </button>
