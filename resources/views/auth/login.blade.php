@@ -126,4 +126,4 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     
-</html>
+</html>a
