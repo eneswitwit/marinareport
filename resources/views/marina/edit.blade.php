@@ -54,7 +54,11 @@
                     
                     <div class="col-md-9">
                         @if (!str_contains($input,'wertung'))
+                        @if(str_contains($input,'kurz') || str_contains($input,'beleg'))
+                        <textarea rows="3" id={{ $input }} class="form-control" name={{ $input }} value="{{ $marina->$input }}" autofocus>{{ $marina->$input }} </textarea>
+                        @else
                         <input id={{ $input }} type="text" class="form-control" name={{ $input }} value="{{ $marina->$input }}" autofocus>
+                        @endif
                         @else
                         <input id={{ $input }} type="integer" class="form-control" name={{ $input }} value="{{ $marina->$input }}" autofocus>
                         @endif

@@ -40,6 +40,7 @@
                 <h3 style="margin-top: 0px;"> {{ $marina->marinaname }} </h3>
                 
                 <p> <b> Land </b> {{ $marina->land }} </p>
+                <p> <b> Stadt </b> {{ $marina->stadt }} </p>
                 <p> <b> Region </b> {{ $marina->region }} </p>
                 <p> <b> Modernität, Attraktivität der Marina  </b>
                     <?php for($x=$marina->h_bewertung;$x>0;$x--){
