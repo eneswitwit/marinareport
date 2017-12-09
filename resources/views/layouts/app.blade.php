@@ -57,6 +57,18 @@
         .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
         background-color: #000080;
         }
+        @media (max-width: 767px){
+            .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+                color: white;
+            }
+            .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+                color: white;
+            }
+            .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus
+            {
+                color: white;
+            }
+        }
         .panel-default {
         height: 100px;
         display: flex;
@@ -112,7 +124,6 @@
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/rateyo.js') }}"></script>
         <script>
-
         $(function () {
         $("#rateYo1").rateYo({
         starWidth: "20px",

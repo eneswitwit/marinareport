@@ -10,8 +10,10 @@
             </div>
         </div>
     </div>
+</div>
+<div class="container">
     <div class="row">
-        <div class="col-sm-10 col-sm-offset-1">
+        <div class="col-md-10 col-md-offset-1">
             <form class="form-horizontal" method="GET" action="{{ route('search') }}">
                     {{ csrf_field() }}
             <div class="input-group stylish-input-group">
@@ -28,11 +30,11 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-sm-10 col-md-offset-1">
+        <div class="col-md-10 col-md-offset-1">
         @foreach ($marinas as $marina)
         <div class="panel-body" style="border: 1px solid #d3e0e9; border-radius:4px 4px 4px 4px;">
             <div class="col-md-6">
-                <img src={{ '/bilder/' . $marina->bild }} style="width:400px;margin-bottom: 30px;" >
+                <img src={{ '/bilder/' . $marina->bild }} style="width:100%;margin-bottom: 30px;" >
             </div>
             <div class="col-md-6">
                 <h3 style="margin-top: 0px;"> {{ $marina->marinaname }} </h3>

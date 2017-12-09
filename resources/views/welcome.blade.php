@@ -16,11 +16,9 @@
         color: black;
         font-family: 'Raleway', sans-serif;
         font-weight: 100;
-        height: 100vh;
         margin: 0;
         }
         .full-height {
-        height: 100vh;
         }
         .flex-center {
         align-items: center;

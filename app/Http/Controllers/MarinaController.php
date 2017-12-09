@@ -81,8 +81,8 @@ class MarinaController extends Controller
         $marina->land = $request['land'];
         if($request->hasFile('bild')){
             $image = $request->file('bild')->getClientOriginalName();
-            $request->file('bild')->move( base_path() . '/public/bilder/', $image);
-            $marina->bild = $image;
+            $request->file('bild')->move( base_path() . '/public/bilder/', str_slug($image,"-"));
+            $marina->bild = str_slug($image,"-");
         }
 
         $region = Marina::region();
@@ -217,8 +217,8 @@ class MarinaController extends Controller
         $marina->land = $request['land'];
         if($request->hasFile('bild')){
             $image = $request->file('bild')->getClientOriginalName();
-            $request->file('bild')->move( base_path() . '/public/bilder/', $image);
-            $marina->bild = $image;
+            $request->file('bild')->move( base_path() . '/public/bilder/', str_slug($image,"-"));
+            $marina->bild = str_slug($image,"-");
         }
 
         $region = Marina::region();
