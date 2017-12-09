@@ -178,6 +178,9 @@ class MarinaController extends Controller
         $fazit= Marina::fazit(); 
         $fazit_label= Marina::fazit_label(); 
         $marina = Marina::find($id);
+        $schutz = Marina::schutz();
+        $schutz_label = Marina::schutz_label();
+        $titles = Marina::titles(); 
         return view('marina.edit')->with([
             'id' => $id,
             'region'=> $region, 
@@ -195,6 +198,9 @@ class MarinaController extends Controller
             'fazit' => $fazit,
             'fazit_label' => $fazit_label,
             'marina' => $marina,
+            'titles' => $titles,
+            'schutz' => $schutz,
+            'schutz_label' => $schutz_label,
         ]);
     }
 
@@ -222,8 +228,9 @@ class MarinaController extends Controller
         $preise= Marina::preise(); 
         $kontakt= Marina::kontakt(); 
         $fazit= Marina::fazit();
+        $schutz = Marina::schutz();
 
-        $union = array_merge($region,$hafen,$erreichbarkeit,$lageservices,$preise,$kontakt,$fazit);
+        $union = array_merge($region,$hafen,$erreichbarkeit,$lageservices,$preise,$kontakt,$fazit,$schutz);
 
         foreach ($union as $input)
         {
@@ -291,5 +298,72 @@ class MarinaController extends Controller
 
         ]);
 
+    }
+
+    public function search(Request $request)
+    {
+        $search_string = $request['suche'];
+
+        /*$search_words = [];
+        while(strpos($search_string,' ') != false){
+            $pos = strpos($search_string,' ');
+            $search_words[] = substr($search_string,0,$pos);
+            $search_string = substr($search_string, $pos+1);
+        }
+        $search_words[] = $search_string;
+
+        $search_words_clean = [];*/
+        //foreach($search_words as $search)
+        //{
+            //$search_words_clean[] = preg_replace('/[ \t]+/', '', preg_replace('/\s*$^\s*/', "", $search));
+        //}
+
+        /*$marina_by_region = [];
+        $marina_by_city = [];
+        $marina_by_name = [];
+
+
+        foreach ($search_words_clean as $i => $search) {
+            $marina_by_region[] = Marina::where('region',$search);
+        }*/
+
+        $marinas = Marina::where('marinaname','like', '%'.$search_string.'%')->get();
+
+        $region = Marina::region();
+        $region_label = Marina::region_label();
+        $hafen = Marina::hafen();
+        $hafen_label = Marina::hafen_label();
+        $erreichbarkeit= Marina::erreichbarkeit();
+        $erreichbarkeit_label= Marina::erreichbarkeit_label();  
+        $lageservices= Marina::lageservices();
+        $lageservices_label= Marina::lageservices_label();
+        $preise= Marina::preise(); 
+        $preise_label= Marina::preise_label();
+        $kontakt= Marina::kontakt(); 
+        $kontakt_label= Marina::kontakt_label(); 
+        $fazit= Marina::fazit(); 
+        $fazit_label= Marina::fazit_label(); 
+        $schutz = Marina::schutz();
+        $schutz_label = Marina::schutz_label();
+        return view('home')->with(['marinas' => $marinas,
+            'region'=> $region, 
+            'region_label' => $region_label,
+            'hafen' => $hafen,
+            'hafen_label' => $hafen_label,
+            'erreichbarkeit' => $erreichbarkeit,
+            'erreichbarkeit_label' => $erreichbarkeit_label,
+            'lageservices' => $lageservices,
+            'lageservices_label' => $lageservices_label,
+            'preise' => $preise,
+            'preise_label' => $preise_label,
+            'kontakt' => $kontakt,
+            'kontakt_label' => $kontakt_label,
+            'fazit' => $fazit,
+            'fazit_label' => $fazit_label,
+            'schutz' => $schutz,
+            'schutz_label' => $schutz_label,
+            'marinas' => $marinas,
+
+        ]);
     }
 }

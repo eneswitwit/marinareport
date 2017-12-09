@@ -9,12 +9,12 @@ class Marina extends Model
 
 	public static function region() 
 	{ 
-		return array('land','region' ,'marinaname'); 
+		return array('land','region' ,'stadt','marinaname'); 
 	}
 
 	public static function region_label()
 	{
-		return ['Land','Region' ,'Marinaname'];
+		return ['Land','Region' ,'Stadt','Marinaname'];
 	}
 
 	public static function hafen()
@@ -80,12 +80,12 @@ class Marina extends Model
 
 	public static function schutz()
 	{
-		return['e_sdl_wind','e_sdl_sicherheit','e_sdl_marinero'];
+		return['e_sdl_wind','e_sdl_sicherheit','e_sdl_marinero','l_sicherheit_wertung'];
 	}
 
 	public static function schutz_label()
 	{
-		return['Vor Wind und Wetter','Sicherheit','Marinero'];
+		return['Vor Wind und Wetter','Sicherheit','Marinero','Wertung Sicherheit und Schutz'];
 	}
 
 	public static function titles()

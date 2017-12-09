@@ -10,85 +10,13 @@
         <title>{{ config('app.name', 'Marina Report') }}</title>
         <!-- Styles -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" rel="stylesheet">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/jquery.rateyo.css') }}" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-        <script>
-        $(document).on('click', '#close-preview', function(){
-        $('.image-preview').popover('hide');
-        // Hover befor close the preview
-        $('.image-preview').hover(
-        function () {
-        $('.image-preview').popover('show');
-        },
-        function () {
-        $('.image-preview').popover('hide');
-        }
-        );
-        });
-        $(function() {
-        // Create the close button
-        var closebtn = $('<button/>', {
-        type:"button",
-        text: 'x',
-        id: 'close-preview',
-        style: 'font-size: initial;',
-        });
-        closebtn.attr("class","close pull-right");
-        // Set the popover default content
-        $('.image-preview').popover({
-        trigger:'manual',
-        html:true,
-        title: "<strong>Vorschau</strong>"+$(closebtn)[0].outerHTML,
-        content: "Kein Bild.",
-        placement:'bottom'
-        });
-        // Clear event
-        $('.image-preview-clear').click(function(){
-        $('.image-preview').attr("data-content","").popover('hide');
-        $('.image-preview-filename').val("");
-        $('.image-preview-clear').hide();
-        $('.image-preview-input input:file').val("");
-        $(".image-preview-input-title").text("Hochladen");
-        });
-        // Create the preview image
-        $(".image-preview-input input:file").change(function (){
-        var img = $('<img/>', {
-        id: 'dynamic',
-        width:250,
-        height:200
-        });
-        var file = this.files[0];
-        var reader = new FileReader();
-        // Set preview image into the popover data-content
-        reader.onload = function (e) {
-        $(".image-preview-input-title").text("Ändern");
-        $(".image-preview-clear").show();
-        $(".image-preview-filename").val(file.name);
-        img.attr('src', e.target.result);
-        $(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
-        }
-        reader.readAsDataURL(file);
-        });
-        });
-        $.fn.stars = function() {
-        return $(this).each(function() {
-        // Get the value
-        var val = parseFloat($(this).html());
-        // Make sure that the value is in 0 - 5 range, multiply to get width
-        var size = Math.max(0, (Math.min(5, val))) * 16;
-        // Create stars holder
-        var $span = $('<span />').width(size);
-        // Replace the numerical value with stars
-        $(this).html($span);
-        });
-        }
-        $(function() {
-        $('span.stars').stars();
-        });
-        </script>
         <style>
+        body, html {
+        font-family: helvetica;
+        }
         .container{
         margin-top:20px;
         }
@@ -154,16 +82,150 @@
         span.stars span {
         background-position: 0 0;
         }
-
         .btn-primary:hover {
-            background-color: grey;
-            text-decoration: none;
+        background-color: grey;
+        text-decoration: none;
         }
-
         a:hover, a:focus {
-            text-decoration: none;
+        text-decoration: none;
+        }
+        #imaginary_container{
+        margin-top:20%; /* Don't copy this */
+        }
+        .stylish-input-group .input-group-addon{
+        background: white !important;
+        }
+        .stylish-input-group .form-control{
+        border-right:0;
+        box-shadow:0 0 0;
+        border-color:#ccc;
+        }
+        .stylish-input-group button{
+        border:0;
+        background:transparent;
         }
         </style>
+        <!-- Scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!--<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>-->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" rel="stylesheet">
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/rateyo.js') }}"></script>
+        <script>
+
+        $(function () {
+        $("#rateYo1").rateYo({
+        starWidth: "20px",
+        });
+        });
+        $(function () {
+        $("#rateYo2").rateYo({
+        starWidth: "20px",
+        });
+        });
+        $(function () {
+        $("#rateYo3").rateYo({
+        starWidth: "20px",
+        });
+        });
+        $(function () {
+        $("#rateYo4").rateYo({
+        starWidth: "20px",
+        });
+        });
+        $(function () {
+        $("#rateYo5").rateYo({
+        starWidth: "20px",
+        });
+        });
+        $(function () {
+        $("#rateYo6").rateYo({
+        starWidth: "20px",
+        });
+        });
+        $(function () {
+        $("#rateYo7").rateYo({
+        starWidth: "20px",
+        });
+        });
+        $(function () {
+        $("#rateYo8").rateYo({
+        starWidth: "20px",
+        });
+        });
+        $(function () {
+        $("#rateYo9").rateYo({
+        starWidth: "20px",
+        });
+        });
+        $(function () {
+        $("#rateYo10").rateYo({
+        starWidth: "20px",
+        });
+        });
+        $(function () {
+        $("#rateYo11").rateYo({
+        starWidth: "20px",
+        });
+        });
+        $(document).on('click', '#close-preview', function(){
+        $('.image-preview').popover('hide');
+        // Hover befor close the preview
+        $('.image-preview').hover(
+        function () {
+        $('.image-preview').popover('show');
+        },
+        function () {
+        $('.image-preview').popover('hide');
+        }
+        );
+        });
+        $(function() {
+        // Create the close button
+        var closebtn = $('<button/>', {
+        type:"button",
+        text: 'x',
+        id: 'close-preview',
+        style: 'font-size: initial;',
+        });
+        closebtn.attr("class","close pull-right");
+        // Set the popover default content
+        $('.image-preview').popover({
+        trigger:'manual',
+        html:true,
+        title: "<strong>Vorschau</strong>"+$(closebtn)[0].outerHTML,
+        content: "Kein Bild.",
+        placement:'bottom'
+        });
+        // Clear event
+        $('.image-preview-clear').click(function(){
+        $('.image-preview').attr("data-content","").popover('hide');
+        $('.image-preview-filename').val("");
+        $('.image-preview-clear').hide();
+        $('.image-preview-input input:file').val("");
+        $(".image-preview-input-title").text("Hochladen");
+        });
+        // Create the preview image
+        $(".image-preview-input input:file").change(function (){
+        var img = $('<img/>', {
+        id: 'dynamic',
+        width:250,
+        height:200
+        });
+        var file = this.files[0];
+        var reader = new FileReader();
+        // Set preview image into the popover data-content
+        reader.onload = function (e) {
+        $(".image-preview-input-title").text("Ändern");
+        $(".image-preview-clear").show();
+        $(".image-preview-filename").val(file.name);
+        img.attr('src', e.target.result);
+        $(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
+        }
+        reader.readAsDataURL(file);
+        });
+        });
+        </script>
     </head>
     <body style="background-color: white;">
         <div id="app">
@@ -217,8 +279,5 @@
             </nav>
             @yield('content')
         </div>
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}"></script>
-        <script src="{{ asset('js/xepOnline.jqPlugin.js') }}"></script>
     </body>
 </html>

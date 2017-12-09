@@ -56,7 +56,7 @@
 		</style>
 	</head>
 	<body style="background-color: white;">
-		<div style="height:1000px;width: 803px;background-color: #000080;">
+		<div style="height:1100px;width: 803px;background-color: #000080;">
 			<div class="content">
 				<div class="title m-b-md">
 					Marina Report
@@ -68,7 +68,12 @@
 			<div style="height:1188px;width: 803px;padding: 0px;margin:0px;">
 				<div class="row" style="width: 803px;padding: 0px;margin:0px;margin-top: 10px;">
 					<div class="col-md-6">
+						@if(!($marina->bild == ''))
 						<img src={{ '/bilder/' . $marina->bild }} style="width: 100%;">
+						@endif
+						@foreach ($kontakt as $i => $input)
+						{{ $marina->$input . " | " }}
+						@endforeach
 					</div>
 					<div class="col-md-6" style="border:1px solid grey;">
 						<h5 style="text-align: center;border:0px solid grey;"> {{ $marina->marinaname }} </h5>
@@ -86,10 +91,10 @@
 							}
 						?> </span></p>
 						<p> <b> Wertung Sicherheit und Schutz </b> <?php for($x=$marina->l_sicherheit_wertung;$x>0;$x--){
-																			echo '<span style="color:#f4e842;"> ★ </span>';
+																					echo '<span style="color:#f4e842;"> ★ </span>';
 						}?></p>
 						<p> <b> Wertung der Lage und Erreichbarkeit </b> <?php for($x=$marina->ls_wertung;$x>0;$x--){
-																			echo '<span style="color:#f4e842;"> ★ </span>';
+																					echo '<span style="color:#f4e842;"> ★ </span>';
 						}?> </p>
 					</div>
 				</div>
@@ -240,11 +245,8 @@
 					</div>
 				</div>
 				<div style="text-align: center; margin-top: 5px; font-style: italic;">
-			@foreach ($kontakt as $i => $input)
-			{{ $marina->$input . " | " }}
-			@endforeach
-		</div>
-		</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

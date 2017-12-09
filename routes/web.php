@@ -34,3 +34,5 @@ Route::get('/pdf', 'MarinaController@printPDF')->name('pdf');
 // Marina
 Route::resource('marina', 'MarinaController');
 
+// Search
+Route::get('/suche' , 'MarinaController@search')->name('search');

@@ -7,8 +7,6 @@
 
 require('./bootstrap');
 
-require('./xepOnline.jqPlugin');
-
 window.Vue = require('vue');
 
 /**
