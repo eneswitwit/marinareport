@@ -40,7 +40,7 @@
 				</div>
 				@endif
 				@endforeach
-				<h4 style=""> Anzahl und Verfügbarkeit Liegeplätze</h4>
+				<h4 style="text-align: center"> Anzahl und Verfügbarkeit Liegeplätze</h4>
 				@foreach ($hafen as $i => $input)
 				@if (str_contains($input,'av'))
 				<div class="row">
@@ -62,7 +62,7 @@
 				<hr>
 				<h2 style="text-align: center;"> Erreichbarkeit </h2>
 				@foreach ($erreichbarkeit as $i => $input)
-				@if (str_contains($input,'_e_'))
+				@if (str_contains($input,'_e_f') || str_contains($input,'_e_a'))
 				<div class="row">
 					<label for="name" class="col-md-2 control-label">{{ $erreichbarkeit_label[$i] }}</label>
 					<div class="col-md-9">
@@ -79,7 +79,7 @@
 				@endforeach
 				<h4> Attraktive Lage </h4>
 				@foreach ($erreichbarkeit as $i => $input)
-				@if (str_contains($input,'_a_'))
+				@if (str_contains($input,'_a_') || str_contains($input,'l_e_yacht') || str_contains($input,'l_bewertung'))
 				<div class="row">
 					<label for="name" class="col-md-2 control-label">{{ $erreichbarkeit_label[$i] }}</label>
 					<div class="col-md-9">
@@ -88,22 +88,6 @@
 						@else
 						@if($marina->$input!= NULL)
 							<div id="rateYo4" data-rateyo-read-only="true" data-rateyo-rating={{ $marina->$input }}></div>
-						@endif
-						@endif
-					</div>
-				</div>
-				@endif
-				@endforeach
-				@foreach ($erreichbarkeit as $i => $input)
-				@if (str_contains($input,'wertung') && !str_contains($input,'sicherheit'))
-				<div class="row">
-					<label for="name" class="col-md-2 control-label">{{ $erreichbarkeit_label[$i] }}</label>
-					<div class="col-md-9">
-						@if (!str_contains($input,'wertung'))
-						{{ $marina->$input }}
-						@else
-						@if($marina->$input!= NULL)
-							<div id="rateYo5" data-rateyo-read-only="true" data-rateyo-rating={{ $marina->$input }}></div>
 						@endif
 						@endif
 					</div>
@@ -127,8 +111,24 @@
 				</div>
 				@endif
 				@endforeach
+				@foreach ($erreichbarkeit as $i => $input)
+				@if (str_contains($input,'l_e_boot_wertung'))
+				<div class="row">
+					<label for="name" class="col-md-2 control-label">{{ $erreichbarkeit_label[$i] }}</label>
+					<div class="col-md-9">
+						@if (!str_contains($input,'wertung'))
+						{{ $marina->$input }}
+						@else
+						@if($marina->$input!= NULL)
+							<div id="rateYo5" data-rateyo-read-only="true" data-rateyo-rating={{ $marina->$input }}></div>
+						@endif
+						@endif
+					</div>
+				</div>
+				@endif
+				@endforeach
 				<hr>
-				<h2 style="text-align: center;"> Schutz des Liegeplatzes </h2>
+				<h2 style="text-align: center;"> Sicherheit und Schutz des Liegeplatzes</h2>
 				@foreach ($schutz as $i => $input)
 				<div class="row">
 					<label for="name" class="col-md-2 control-label">{{ $schutz_label[$i] }}</label>
@@ -143,24 +143,8 @@
 					</div>
 				</div>
 				@endforeach
-				@foreach ($erreichbarkeit as $i => $input)
-				@if (str_contains($input,'wertung') && str_contains($input,'sicherheit'))
-				<div class="row">
-					<label for="name" class="col-md-2 control-label">{{ $erreichbarkeit_label[$i] }}</label>
-					<div class="col-md-9">
-						@if (!str_contains($input,'wertung'))
-						{{ $marina->$input }}
-						@else
-						@if($marina->$input!= NULL)
-							<div id="rateYo8" data-rateyo-read-only="true" data-rateyo-rating={{ $marina->$input }}></div>
-						@endif
-						@endif
-					</div>
-				</div>
-				@endif
-				@endforeach
 				<hr>
-				<h2 style="text-align: center;"> Lage und Services </h2>
+				<h2 style="text-align: center;"> Services am Land </h2>
 				@foreach ($lageservices as $i => $input)
 				<div class="row">
 					<label for="name" class="col-md-2 control-label">{{ $lageservices_label[$i] }}</label>
@@ -176,8 +160,8 @@
 				</div>
 				@endforeach
 				<hr>
-				<h2 style="text-align: center;"> Preise </h2>
-				<h4> Preise 37 Fuß </h4>
+				<h2 style="text-align: center;"> Preise (inkl. Mwst.) </h2>
+				<h4 style="text-align: center;"> Preise 37 Fuß </h4>
 				@foreach ($preise as $i => $input)
 				@if (str_contains($input,'p_ps'))
 				<div class="row">
@@ -195,9 +179,25 @@
 				@endif
 				@endforeach
 				
-				<h4> Parkplätze </h4>
+				<h4 style="text-align: center;"> Parkplätze </h4>
 				@foreach ($preise as $i => $input)
 				@if (str_contains($input,'p_pp'))
+				<div class="row">
+					<label for="name" class="col-md-2 control-label">{{ $preise_label[$i] }}</label>
+					<div class="col-md-9">
+						@if (!str_contains($input,'wertung'))
+						{{ $marina->$input }}
+						@else
+						@if($marina->$input!= NULL)
+							<div id="rateYo11" data-rateyo-rating={{ $marina->$input }}></div>
+						@endif
+						@endif
+					</div>
+				</div>
+				@endif
+				@endforeach
+				@foreach ($preise as $i => $input)
+				@if (str_contains($input,'p_s'))
 				<div class="row">
 					<label for="name" class="col-md-2 control-label">{{ $preise_label[$i] }}</label>
 					<div class="col-md-9">

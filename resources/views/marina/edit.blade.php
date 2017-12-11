@@ -71,7 +71,7 @@
                 </div>
                 @endif
                 @endforeach
-                <h4 style=""> Anzahl und Verfügbarkeit Liegeplätze</h4>
+                <h4 style="text-align: center"> Anzahl und Verfügbarkeit Liegeplätze</h4>
                 @foreach ($hafen as $i => $input)
                 @if (str_contains($input,'av'))
                 <div class="form-group{{ $errors->has($input) ? ' has-error' : '' }}">
@@ -79,7 +79,11 @@
                     
                     <div class="col-md-9">
                         @if (!str_contains($input,'wertung'))
-                        <input id={{ $input }} type="text" class="form-control" name={{ $input }} value="{{ $marina->$input }}" autofocus>
+                            @if (!str_contains($input,'sonstig'))
+                                <input id={{ $input }} type="text" class="form-control" name={{ $input }} value="{{ $marina->$input }}" autofocus>
+                            @else 
+                                <textarea rows="3" id={{ $input }} class="form-control" name={{ $input }} value="{{ $marina->$input }}" autofocus> {{ $marina->$input }} </textarea>
+                            @endif
                         @else
                         <input id={{ $input }} type="integer" class="form-control" name={{ $input }} value="{{ $marina->$input }}" autofocus>
                         @endif
@@ -114,26 +118,7 @@
                 @endforeach
                 <h4> Attraktive Lage </h4>
                 @foreach ($erreichbarkeit as $i => $input)
-                @if(str_contains($input,'_a_'))
-                <div class="form-group{{ $errors->has($input) ? ' has-error' : '' }}">
-                    <label for="name" class="col-md-2 control-label">{{ $erreichbarkeit_label[$i] }}</label>
-                    <div class="col-md-9">
-                        @if (!str_contains($input,'wertung'))
-                        <input id={{ $input }} type="text" class="form-control" name={{ $input }} value="{{ $marina->$input }}" autofocus>
-                        @else
-                        <input id={{ $input }} type="integer" class="form-control" name={{ $input }} value="{{ $marina->$input }}" autofocus>
-                        @endif
-                        @if ($errors->has($input))
-                        <span class="help-block">
-                            <strong>{{ $errors->first($input) }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
-                @endif
-                @endforeach
-                @foreach ($erreichbarkeit as $i => $input)
-                @if (str_contains($input,'wertung') && !str_contains($input,'sicherheit'))
+                @if(str_contains($input,'_a_') || str_contains($input,'l_e_yacht') || str_contains($input,'l_bewertung'))
                 <div class="form-group{{ $errors->has($input) ? ' has-error' : '' }}">
                     <label for="name" class="col-md-2 control-label">{{ $erreichbarkeit_label[$i] }}</label>
                     <div class="col-md-9">
@@ -171,13 +156,36 @@
                 </div>
                 @endif
                 @endforeach
-                <h3 style="text-align: center;"> Schutz des Liegeplatzes </h3>
+                @foreach ($erreichbarkeit as $i => $input)
+                @if (str_contains($input,'l_e_boot_wertung') )
+                <div class="form-group{{ $errors->has($input) ? ' has-error' : '' }}">
+                    <label for="name" class="col-md-2 control-label">{{ $erreichbarkeit_label[$i] }}</label>
+                    <div class="col-md-9">
+                        @if (!str_contains($input,'wertung'))
+                        <input id={{ $input }} type="text" class="form-control" name={{ $input }} value="{{ $marina->$input }}" autofocus>
+                        @else
+                        <input id={{ $input }} type="integer" class="form-control" name={{ $input }} value="{{ $marina->$input }}" autofocus>
+                        @endif
+                        @if ($errors->has($input))
+                        <span class="help-block">
+                            <strong>{{ $errors->first($input) }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
+                @endif
+                @endforeach
+                <h3 style="text-align: center;"> Sicherheit und Schutz des Liegeplatzes </h3>
                 @foreach ($schutz as $i => $input)
                 <div class="form-group{{ $errors->has($input) ? ' has-error' : '' }}">
                     <label for="name" class="col-md-2 control-label">{{ $schutz_label[$i] }}</label>
                     <div class="col-md-9">
                         @if (!str_contains($input,'wertung'))
-                        <input id={{ $input }} type="text" class="form-control" name={{ $input }} value="{{ $marina->$input }}" autofocus>
+                            @if (!str_contains($input,'sonstig'))
+                                <input id={{ $input }} type="text" class="form-control" name={{ $input }} value="{{ $marina->$input }}" autofocus>
+                            @else 
+                                <textarea rows="3" id={{ $input }} class="form-control" name={{ $input }} value="{{ $marina->$input }}" autofocus> {{ $marina->$input }} </textarea>
+                            @endif
                         @else
                         <input id={{ $input }} type="integer" class="form-control" name={{ $input }} value="{{ $marina->$input }}" autofocus>
                         @endif
@@ -189,13 +197,17 @@
                     </div>
                 </div>
                 @endforeach
-                <h3 style="text-align: center;"> Lage und Services </h3>
+                <h3 style="text-align: center;"> Services am Land </h3>
                 @foreach ($lageservices as $i => $input)
                 <div class="form-group{{ $errors->has($input) ? ' has-error' : '' }}">
                     <label for="name" class="col-md-2 control-label">{{ $lageservices_label[$i] }}</label>
                     <div class="col-md-9">
                         @if (!str_contains($input,'wertung'))
-                        <input id={{ $input }} type="text" class="form-control" name={{ $input }} value="{{ $marina->$input }}" autofocus>
+                            @if (!str_contains($input,'sonstig'))
+                                <input id={{ $input }} type="text" class="form-control" name={{ $input }} value="{{ $marina->$input }}" autofocus>
+                            @else 
+                                <textarea rows="3" id={{ $input }} class="form-control" name={{ $input }} value="{{ $marina->$input }}" autofocus> {{ $marina->$input }} </textarea>
+                            @endif
                         @else
                         <input id={{ $input }} type="integer" class="form-control" name={{ $input }} value="{{ $marina->$input }}" autofocus>
                         @endif
@@ -207,8 +219,8 @@
                     </div>
                 </div>
                 @endforeach
-                <h3 style="text-align: center;"> Preise </h3>
-                <h4> Preise 37 Fuß </h4>
+                <h3 style="text-align: center;"> Preise (inkl. Mwst.)</h3>
+                <h4 style="text-align: center;"> Preise 37 Fuß </h4>
                 @foreach ($preise as $i => $input)
                 @if (str_contains($input,'p_ps'))
                 <div class="form-group{{ $errors->has($input) ? ' has-error' : '' }}">
@@ -229,7 +241,7 @@
                 @endif
                 @endforeach
                 
-                <h4> Parkplätze </h4>
+                <h4 style="text-align: center;"> Parkplätze </h4>
                 @foreach ($preise as $i => $input)
                 @if (str_contains($input,'p_pp'))
                 <div class="form-group{{ $errors->has($input) ? ' has-error' : '' }}">
@@ -249,6 +261,29 @@
                 </div>
                 @endif
                 @endforeach
+
+                @foreach ($preise as $i => $input)
+                @if (str_contains($input,'p_s'))
+                <div class="form-group{{ $errors->has($input) ? ' has-error' : '' }}">
+                    <label for="name" class="col-md-2 control-label">{{ $preise_label[$i] }}</label>
+                    <div class="col-md-9">
+                        @if (!str_contains($input,'sonstiges'))
+                        <input id={{ $input }} type="text" class="form-control" name={{ $input }} value="{{ $marina->$input }}" autofocus>
+                        @else
+                        <textarea id={{ $input }} rows="3" class="form-control" name={{ $input }} value="{{ $marina->$input }}" autofocus>
+                            {{ $marina->$input }}
+                        </textarea>
+                        @endif
+                        @if ($errors->has($input))
+                        <span class="help-block">
+                            <strong>{{ $errors->first($input) }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
+                @endif
+                @endforeach
+
                 <h3 style="text-align: center;"> Kontakt </h3>
                 @foreach ($kontakt as $i => $input)
                 <div class="form-group{{ $errors->has($input) ? ' has-error' : '' }}">
@@ -285,7 +320,7 @@
                     </div>
                 </div>
                 @endforeach
-                {{ Form::submit('Bestästigen', array('class' => 'btn btn-primary btn-block', 'style' => 'height:50px; font-size: 15px; margin-top: 40px;')) }}
+                {{ Form::submit('Bestätigen', array('class' => 'btn btn-primary btn-block', 'style' => 'height:50px; font-size: 15px; margin-top: 40px;')) }}
                 {{Form::close()}}
             </div>
             <div>

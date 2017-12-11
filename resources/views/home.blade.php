@@ -39,20 +39,12 @@
             <div class="col-md-6">
                 <h3 style="margin-top: 0px;"> {{ $marina->marinaname }} </h3>
                 
-                <p> <b> Land </b> {{ $marina->land }} </p>
-                <p> <b> Stadt </b> {{ $marina->stadt }} </p>
-                <p> <b> Region </b> {{ $marina->region }} </p>
-                <p> <b> Modernität, Attraktivität der Marina  </b>
-                    <?php for($x=$marina->h_bewertung;$x>0;$x--){
-                    echo '<span style="color:#f4e842;"> ★ </span>';
-                    }
-                ?> </span></p>
-                <p> <b> Wertung Sicherheit und Schutz </b> <?php for($x=$marina->l_sicherheit_wertung;$x>0;$x--){
-                    echo '<span style="color:#f4e842;"> ★ </span>';
-                }?></p>
-                <p> <b> Wertung Lage/Erreichbarkeit </b> <?php for($x=$marina->ls_wertung;$x>0;$x--){
-                    echo '<span style="color:#f4e842;"> ★ </span>';
-                }?> </p>
+                <p> <b> Ansprechpartner </b> {{ $marina->a_ansprechpartner }} </p>
+                <p> <b> Telefon </b> {{ $marina->an_telefon}} </p>
+                <p> <b> Email </b> {{ $marina->an_email }} </p>
+                <p> <b> Website </b> {{ $marina->a_website }} </p>
+                <p> <b> Adresse </b> {{ $marina->an_anschrift }} </p>
+
                 <div class="row" style="margin-top:50px;">
                     <div class="col-md-4">
                         <a href={{ 'marina/' . $marina->id }}>
