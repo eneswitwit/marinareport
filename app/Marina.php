@@ -75,7 +75,7 @@ class Marina extends Model
 
 	public static function fazit_label() 
 	{
-		return ['Was gefiel','Was nicht gefiel','Zusammenfassung','Gesamtbewertung'];
+		return ['Was gefiel','Was nicht gefiel','Zusammenfassung','Gesamtwertung'];
 	}
 
 	public static function schutz()

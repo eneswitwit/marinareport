@@ -12,11 +12,19 @@
         <!-- Styles -->
         <style>
         html, body {
-        background-color: #000080;
         color: black;
+        height: 100%;
         font-family: 'Raleway', sans-serif;
         font-weight: 100;
-        margin: 0;
+        }
+
+        body {
+        background: url(marina.png) no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-position: center;
         }
         .full-height {
         }
@@ -58,15 +66,14 @@
     <body>
         <div class="flex-center position-ref full-height">
             <div class="content">
-                <div class="title m-b-md">
-                    Marina Report
-                </div>
-                <div class="links">
                     @if (Route::has('login'))
+                    <div class="links">
                     @auth
                     <a href="{{ url('/home') }}">Dashboard</a>
+                    </div>
                     @else
-                    <div class="panel panel-default" style="font-size:18px;">
+
+                    <div class="panel panel-default" style="font-size:18px; width: 600px; margin-top: 400px;">
                         <div class="panel-heading">Anmeldung</div>
                         <div class="panel-body">
                             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
