@@ -41,8 +41,8 @@
                 
                 <p> <b> Ansprechpartner </b> {{ $marina->a_ansprechpartner }} </p>
                 <p> <b> Telefon </b> {{ $marina->an_telefon}} </p>
-                <p> <b> Email </b> {{ $marina->an_email }} </p>
-                <p> <b> Website </b> {{ $marina->a_website }} </p>
+                <p> <b> Email </b>  <a href={{ 'mailto:' .  $marina->an_email }}> {{ $marina->an_email }} </a> </p>
+                <p> <b> Website </b> <a href='{{ $marina->a_website }}'> {{ $marina->a_website }} </a> </p>
                 <p> <b> Adresse </b> {{ $marina->an_anschrift }} </p>
 
                 <div class="row" style="margin-top:50px;">

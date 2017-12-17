@@ -31,6 +31,44 @@
                                     </div> 
                                 </div>
                             </div>
+                    <div class="form-group">
+                        <label for="name" class="col-md-2 control-label">Bild 2</label>
+                            <div class="col-md-9">
+                                <!-- image-preview-filename input [CUT FROM HERE]-->
+                                <div class="input-group image-preview2">
+                                    <input type="text" class="form-control image-preview-filename2" disabled="disabled"> 
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default image-preview-clear2" style="display:none;">
+                                        <span class="glyphicon glyphicon-remove"></span> Löschen
+                                        </button>
+                                        <div class="btn btn-default image-preview-input2">
+                                            <span class="glyphicon glyphicon-folder-open"></span>
+                                            <span class="image-preview-input-title2">Hochladen</span>
+                                            <input type="file" accept="image/png, image/jpeg, image/gif" name="bild2" id="bild2"/>
+                                        </div>
+                                    </span> 
+                                    </div> 
+                                </div>
+                            </div>
+                    <div class="form-group">
+                        <label for="name" class="col-md-2 control-label">Bild 3</label>
+                            <div class="col-md-9">
+                                <!-- image-preview-filename input [CUT FROM HERE]-->
+                                <div class="input-group image-preview3">
+                                    <input type="text" class="form-control image-preview-filename3" disabled="disabled"> 
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default image-preview-clear3" style="display:none;">
+                                        <span class="glyphicon glyphicon-remove"></span> Löschen
+                                        </button>
+                                        <div class="btn btn-default image-preview-input3">
+                                            <span class="glyphicon glyphicon-folder-open"></span>
+                                            <span class="image-preview-input-title3">Hochladen</span>
+                                            <input type="file" accept="image/png, image/jpeg, image/gif" name="bild3" id="bild3"/>
+                                        </div>
+                                    </span> 
+                                    </div> 
+                                </div>
+                            </div>
                         <h2 style="text-align: center;"> Region </h2>
                         @foreach ($region as $i => $input)
                         <div class="form-group{{ $errors->has($input) ? ' has-error' : '' }}">
@@ -276,6 +314,25 @@
                             </div>
                         </div>
                         @endif
+                        @endforeach
+                        <hr>
+                        <h2 style="text-align: center;"> Restaurant </h2>
+                        @foreach ($restaurants as $i => $input)
+                        <div class="form-group{{ $errors->has($input) ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-2 control-label">{{ $restaurants_label[$i] }}</label>
+                            <div class="col-md-9">
+                                @if (!str_contains($input,'wertung'))
+                                <input id={{ $input }} type="text" class="form-control" name={{ $input }} value="{{ old($input) }}" autofocus>
+                                @else
+                                <input id={{ $input }} type="integer" class="form-control" name={{ $input }} value="{{ old($input) }}" autofocus>
+                                @endif
+                                @if ($errors->has($input))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first($input) }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        </div>
                         @endforeach
                         <hr>
                         <h2 style="text-align: center;"> Kontakt </h2>

@@ -44,6 +44,8 @@ class MarinaController extends Controller
         $fazit_label= Marina::fazit_label(); 
         $schutz = Marina::schutz();
         $schutz_label = Marina::schutz_label();
+        $restaurants = Marina::restaurants();
+        $restaurants_label = Marina::restaurants_label();
     
         return view('marina.create')->with([
             'region'=> $region, 
@@ -62,6 +64,8 @@ class MarinaController extends Controller
             'fazit_label' => $fazit_label,
             'schutz' => $schutz,
             'schutz_label' => $schutz_label,
+            'restaurants' => $restaurants,
+            'restaurants_label' => $restaurants_label,
         ]);
     }
 
@@ -85,15 +89,29 @@ class MarinaController extends Controller
             $marina->bild = str_slug($image,"-");
         }
 
+        if($request->hasFile('bild2')){
+            $image = $request->file('bild2')->getClientOriginalName();
+            $request->file('bild2')->move( base_path() . '/public/bilder/', str_slug($image,"-"));
+            $marina->bild2 = str_slug($image,"-");
+        }
+
+        if($request->hasFile('bild3')){
+            $image = $request->file('bild3')->getClientOriginalName();
+            $request->file('bild3')->move( base_path() . '/public/bilder/', str_slug($image,"-"));
+            $marina->bild3 = str_slug($image,"-");
+        }
+
         $region = Marina::region();
         $hafen = Marina::hafen();
         $erreichbarkeit= Marina::erreichbarkeit();
         $lageservices= Marina::lageservices();
         $preise= Marina::preise(); 
         $kontakt= Marina::kontakt(); 
+        $schutz = Marina::schutz();
         $fazit= Marina::fazit();
+        $restaurants = Marina::restaurants();
 
-        $union = array_merge($region,$hafen,$erreichbarkeit,$lageservices,$preise,$kontakt,$fazit);
+        $union = array_merge($region,$hafen,$erreichbarkeit,$lageservices,$preise,$schutz,$restaurants,$kontakt,$fazit);
 
         foreach ($union as $input)
         {
@@ -131,6 +149,8 @@ class MarinaController extends Controller
         $fazit= Marina::fazit(); 
         $fazit_label= Marina::fazit_label();
         $titles = Marina::titles(); 
+        $restaurants = Marina::restaurants();
+        $restaurants_label = Marina::restaurants_label();
         return view('marina.show')->with([
             'region'=> $region, 
             'region_label' => $region_label,
@@ -150,6 +170,8 @@ class MarinaController extends Controller
             'titles' => $titles,
             'schutz' => $schutz,
             'schutz_label' => $schutz_label,
+            'restaurants' => $restaurants,
+            'restaurants_label' => $restaurants_label,
         ]);
 
     }
@@ -181,6 +203,8 @@ class MarinaController extends Controller
         $schutz = Marina::schutz();
         $schutz_label = Marina::schutz_label();
         $titles = Marina::titles(); 
+        $restaurants = Marina::restaurants();
+        $restaurants_label = Marina::restaurants_label();
         return view('marina.edit')->with([
             'id' => $id,
             'region'=> $region, 
@@ -201,6 +225,8 @@ class MarinaController extends Controller
             'titles' => $titles,
             'schutz' => $schutz,
             'schutz_label' => $schutz_label,
+            'restaurants' => $restaurants,
+            'restaurants_label' => $restaurants_label,
         ]);
     }
 
@@ -221,6 +247,18 @@ class MarinaController extends Controller
             $marina->bild = str_slug($image,"-");
         }
 
+        if($request->hasFile('bild2')){
+            $image = $request->file('bild2')->getClientOriginalName();
+            $request->file('bild2')->move( base_path() . '/public/bilder/', str_slug($image,"-"));
+            $marina->bild2 = str_slug($image,"-");
+        }
+
+        if($request->hasFile('bild3')){
+            $image = $request->file('bild3')->getClientOriginalName();
+            $request->file('bild3')->move( base_path() . '/public/bilder/', str_slug($image,"-"));
+            $marina->bild3 = str_slug($image,"-");
+        }
+
         $region = Marina::region();
         $hafen = Marina::hafen();
         $erreichbarkeit= Marina::erreichbarkeit();
@@ -229,8 +267,9 @@ class MarinaController extends Controller
         $kontakt= Marina::kontakt(); 
         $fazit= Marina::fazit();
         $schutz = Marina::schutz();
+        $restaurants = Marina::restaurants();
 
-        $union = array_merge($region,$hafen,$erreichbarkeit,$lageservices,$preise,$kontakt,$fazit,$schutz);
+        $union = array_merge($region,$hafen,$erreichbarkeit,$lageservices,$preise,$kontakt,$fazit,$schutz,$restaurants);
 
         foreach ($union as $input)
         {
@@ -274,6 +313,8 @@ class MarinaController extends Controller
         $schutz = Marina::schutz();
         $schutz_label = Marina::schutz_label();
         $marinas = Marina::all();
+        $restaurants = Marina::restaurants();
+        $restaurants_label = Marina::restaurants_label();
 
         /*$client = new GuzzleHttp\Client();
         $res = $client->get('http://api.pdflayer.com/api/convert?access_key=a888898b574792bdc1687ed1440c8085&document_url=marina.eneswitwit.com/pdf& page_size=A4&margin_top=10&margin_bottom=10&margin_left=10&margin_right=10');*/
@@ -295,6 +336,8 @@ class MarinaController extends Controller
             'fazit_label' => $fazit_label,
             'schutz' => $schutz,
             'schutz_label' => $schutz_label,
+            'restaurants' => $restaurants,
+            'restaurants_label' => $restaurants_label,
 
         ]);
 
@@ -345,6 +388,8 @@ class MarinaController extends Controller
         $fazit_label= Marina::fazit_label(); 
         $schutz = Marina::schutz();
         $schutz_label = Marina::schutz_label();
+        $restaurants = Marina::restaurants();
+        $restaurants_label = Marina::restaurants_label();
         return view('home')->with(['marinas' => $marinas,
             'region'=> $region, 
             'region_label' => $region_label,
@@ -363,6 +408,8 @@ class MarinaController extends Controller
             'schutz' => $schutz,
             'schutz_label' => $schutz_label,
             'marinas' => $marinas,
+            'restaurants' => $restaurants,
+            'restaurants_label' => $restaurants_label,
 
         ]);
     }
