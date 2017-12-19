@@ -279,9 +279,7 @@
 							@if (!str_contains($input,'wertung'))
 							{{ $marina->$input }}
 							@else
-							@if($marina->$input!= NULL)
-							<div id="rateYo" data-rateyo-rating={{ $marina->$input }}></div>
-							@endif
+							<div id="rateYo12" data-rateyo-rating={{ intval($marina->$input) }}></div>
 							@endif
 						</div>
 					</div>

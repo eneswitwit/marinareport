@@ -220,6 +220,11 @@
         starWidth: "20px",
         });
         });
+        $(function () {
+        $("#rateYo12").rateYo({
+        starWidth: "20px",
+        });
+        });
         $(document).on('click', '#close-preview', function(){
         $('.image-preview').popover('hide');
         // Hover befor close the preview
@@ -272,7 +277,7 @@
         $(".image-preview-clear").show();
         $(".image-preview-filename").val(file.name);
         img.attr('src', e.target.result);
-        $(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
+        //$(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
         }
         reader.readAsDataURL(file);
         });
@@ -331,7 +336,7 @@
         $(".image-preview-clear2").show();
         $(".image-preview-filename2").val(file.name);
         img.attr('src', e.target.result);
-        $(".image-preview2").attr("data-content",$(img)[0].outerHTML).popover("show");
+        //$(".image-preview2").attr("data-content",$(img)[0].outerHTML).popover("show");
         }
         reader.readAsDataURL(file);
         });
@@ -389,7 +394,7 @@
         $(".image-preview-clear3").show();
         $(".image-preview-filename3").val(file.name);
         img.attr('src', e.target.result);
-        $(".image-preview3").attr("data-content",$(img)[0].outerHTML).popover("show");
+        //$(".image-preview3").attr("data-content",$(img)[0].outerHTML).popover("show");
         }
         reader.readAsDataURL(file);
         });

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+ @extends('layouts.app')
 @section('content')
 <div class="container">
     <div class="row">
@@ -233,25 +233,6 @@
                         </div>
                         @endforeach
 
-                        @foreach ($erreichbarkeit as $i => $input)
-                        @if(str_contains($input,'sicherheit_wertung'))
-                        <div class="form-group{{ $errors->has($input) ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-2 control-label">{{ $erreichbarkeit_label[$i] }}</label>
-                            <div class="col-md-9">
-                                @if (!str_contains($input,'wertung'))
-                                <input id={{ $input }} type="text" class="form-control" name={{ $input }} value="{{ old($input) }}" autofocus>
-                                @else
-                                <input id={{ $input }} type="integer" class="form-control" name={{ $input }} value="{{ old($input) }}" autofocus>
-                                @endif
-                                @if ($errors->has($input))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first($input) }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                        </div>
-                        @endif
-                        @endforeach
                         <hr>
                         <h2 style="text-align: center;"> Lage und Services </h2>
                         @foreach ($lageservices as $i => $input)
